@@ -1,0 +1,120 @@
+#include <SoftwareSerial.h>
+
+SoftwareSerial BTSerial(2, 3); //블루투스 핀지정
+char cmd;
+ int pb = 13;  //부저 핀 지정
+ int melody[] = {262, 294, 330, 349, 392, 440, 494, 523, 277, 311, 370, 415, 466}; //음의 높낮이
+
+ 
+
+void setup(){
+
+Serial.begin(9600);
+
+    delay(100);
+
+    BTSerial.begin(9600);
+
+    pinMode(pb, OUTPUT);
+}
+
+ 
+
+ 
+
+void loop(){
+   if(BTSerial.available())
+
+    {
+
+      cmd = BTSerial.read();
+
+      Serial.print("Command = ");
+
+      Serial.println(cmd);
+
+    
+
+    if(cmd == 'c') {    // c부터 시작돼는 계이름
+
+       tone(pb, melody[0]);
+       delay(250);
+       noTone(pb);
+
+    }else if(cmd == 'd') {
+
+       tone(pb, melody[1]);
+       delay(250);
+       noTone(pb);
+
+    }
+
+     else if(cmd == 'e') {
+
+       tone(pb, melody[2]);
+       delay(250);
+       noTone(pb);
+
+    }
+
+ else if(cmd == 'f') {
+
+       tone(pb, melody[3]);
+       delay(250);
+       noTone(pb);
+
+    }
+ else if(cmd == 'g') {
+
+       tone(pb, melody[4]);
+       delay(250);
+       noTone(pb);
+
+    }
+ else if(cmd == 'a') {
+
+       tone(pb, melody[5]);
+       delay(250);
+       noTone(pb);
+
+    }
+ else if(cmd == 'b') {
+
+       tone(pb, melody[6]);
+       delay(250);
+       noTone(pb);
+
+    }else if(cmd == 'C') {  //높은도
+
+       tone(pb, melody[7]);
+       delay(250);
+       noTone(pb);
+
+    }else if(cmd == 'cs') {   // 낮은 도 샵
+
+       tone(pb, melody[8]);
+       delay(250);
+       noTone(pb);
+}else if(cmd == 'ds') {
+
+       tone(pb, melody[9]);
+       delay(250);
+       noTone(pb);
+       }else if(cmd == 'fs') {
+
+       tone(pb, melody[10]);
+       delay(250);
+       noTone(pb);
+       }else if(cmd == 'gs') {
+
+       tone(pb, melody[11]);
+       delay(250);
+       noTone(pb);
+       }else if(cmd == 'as') {
+
+       tone(pb, melody[12]);
+       delay(250);
+       noTone(pb);
+       }
+    }
+}
